@@ -1,0 +1,53 @@
+
+1. db.animals.save({_id:1})
+
+2. db.animals.insert({_id:1})
+
+3. db.animals.updateOne({_id:1},{$set:{"name":"lion"}})
+
+4. db.animals.updateOne({_id:1},{$set:{Age:30}})
+
+5. db.animals.updateOne({_id:1},{$inc:{Age:2}})
+
+6. db.animals.updateOne({_id:1},{$inc:{Age:-4}})
+
+7. db.animals.updateOne({_id:1},{$mul:{Age:10}})
+
+8. db.animals.updateOne({_id:1},{$set:{Age:30}})
+
+9. db.animals.updateOne({_id:1},{$set:{tags:["cute"]}})
+
+10. db.animals.updateOne({_id:1},{$push:{"tags":"Great"}})
+
+11. db.animals.updateOne({_id:1},{$unset:{"age":""}})
+
+12. db.animals.updateOne({_id:1},{$addToSet:{"tags":{$each:["King","Predator"]}}})
+
+13. db.animals.updateOne({_id:1},{$push:{"tags":{$each:["a","b"],$position:2}}})
+
+14. Run the above again. Does the value insert again? YES
+
+15.db.animals.updateOne({_id:1},{$addToSet:{"tags":{$each:["King","Predator"]}}})
+
+16. db.animals.updateOne({_id:1},{$pull:{"tags":{$in:["a","b"]}}})
+
+17. db.animals.updateMany(  {_id:1 , tags : "cute"},   { $set: { "tags.$" : "not Cute"}})
+
+18. db.animals.updateOne({_id:1},{$pop:{tags:-1}})
+
+19.	var i=10;while(i<=20){db.animals.save({_id:i , name: "no name"}); i++}
+
+20.	db.animals.updateMany({_id:{$gte:10 , $lte:20}} , {$set: {"info.color" :"grey"}} )
+
+21. db.animals.updateOne({_id:4},{$pop:{"tags":-1}})
+
+22. db.animals.updateOne({_id:{$eq:4}},{$unset:{"tags":""}})
+
+23. db.animals.deleteMany({_id: {$gte:10 , $lte:20}});
+
+24. db.animals.updateMany({} , {$push : {tags: "animal" }} , );
+{ "acknowledged" : true, "matchedCount" : 6, "modifiedCount" : 6 }
+
+25. db.animals.replaceOne({_id : 1} , {"name" : "lioness" , "tags": ["animal"] , "info" : { "color":"grey" , "canFly" : true}} )
+
+26.db.animals.updateOne({_id:15},{$set:{name:"elephant"}},{"upsert":true})
